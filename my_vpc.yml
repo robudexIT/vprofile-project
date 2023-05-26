@@ -103,7 +103,7 @@
       ec2_vpc_route_table:
         vpc_id:  "{{vpcoutput.vpc.id}}"
         region: "{{region}}"
-        state: "{{"{{region}}"}}"
+        state: "{{state}}"
         tags:
           Name: my_vprofile-PubRT
         subnets:
