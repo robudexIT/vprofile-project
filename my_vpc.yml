@@ -140,7 +140,8 @@
             gateway_id: "{{NATGW_out.nat_gateway_id}}"
       register: privTR_out
 
-    - debug: "{{item}}"
+    - debug: 
+       var: "{{item}}"
       loop: 
         - vpcoutput.vpc.id
         - my_pubsub01_out.subnet.id
