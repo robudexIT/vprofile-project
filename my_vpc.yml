@@ -89,5 +89,73 @@
         resource_tags:
           Name: my_vprofile-privsub3 
       register: my_privsub03_out
+
+    - name: Create Internet Gateway
+      ec2_vpc_igw:
+        vpc_id: "{{vpcoutput.vpc.id}}"
+        region: "{{region}}"
+        state: "{{state}}"
+        resource_tags: 
+          Name: my_vprofile_IGW
+      register: my_igw_out
+
+    - name: Create Public Subnet Route Table
+      ec2_vpc_route_table:
+        vpc_id:  "{{vpcoutput.vpc.id}}"
+        region: "{{region}}"
+        state: "{{"{{region}}"}}"
+        tags:
+          Name: my_vprofile-PubRT
+        subnets:
+         - "{{my_pubsub01_out.subnet.id}}"
+         - "{{my_pubsub02_out.subnet.id}}"
+         - "{{my_pubsub03_out.subnet.id}}"
+        routes: 
+          - dest : 0.0.0.0/0
+            gateway_id: "{{my_igw_out.gateway_id}}"
+       register: pubRT_out
+
+    - name: Create Nat Gateway and allocate new EIP if a nat gateway does not yet exist in the subnet
+      ec2_vpc_nat_gateway:
+        state: "{{state}}"
+        subnet_id: "{{my_pubsub01_out.subnet.id}}"
+        wait: yes
+        region: "{{region}}"
+        if_exist_do_not_create: true
+      register: NATGW_out
+
+
+    - name: Create Private Subnet Route Table
+      ec2_vpc_route_table:
+        vpc_id:  "{{vpcoutput.vpc.id}}"
+        region: "{{region}}"
+        tags:
+          Name: myVprofile_PrivRT
+        subnets:
+          - "{{my_privsub01_out.subnet.id}}"
+          - "{{my_privsub02_out.subnet.id}}"
+          - "{{my_privsub03_out.subnet.id}}"
+        routes:
+          - dest: 0.0.0.0/0
+            gateway_id: "{{NATGW_out.gateway_id}}"
+      register: privTR_out
+
+    - debug: "{{item}}"
+      loop: 
+        - vpcoutput.vpc.id
+        - my_pubsub01_out.subnet.id
+        - my_pubsub02_out.subnet.id
+        - my_pubsub03_out.subnet.id
+        - my_privsub01_out.subnet.id
+        - my_privsub02_out.subnet.id
+        - my_privsub03_out.subnet.id
+        - my_igw_out.gateway_id
+        - pubRT_out.route_table.id
+        - NATGW_out.nat_gateway_id
+        - privTR_out.route_table.id
+
+
+          
+
       
 
