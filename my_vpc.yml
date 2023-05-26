@@ -16,6 +16,6 @@
         state: "{{state}}"
       register: vpcoutput
 
-      - debug:
-         var: vpcoutput
+    - debug:
+        var: vpcoutput
 
