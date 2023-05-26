@@ -49,7 +49,7 @@
            Name: "Bastion Host"
            Project: Vprofile 
            Owner: "Devops Team"
-        count: 1
+        # count: 1
         # count_tag: 
         #   Name: "Bastion Host"
         #   Project: Vprofile
