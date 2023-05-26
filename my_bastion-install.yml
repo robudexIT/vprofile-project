@@ -45,10 +45,10 @@
         image: "{{my_bastion_ami}}"
         wait: true
         wait_timeout: 300
-        tags:
-           Name: "Bastion Host"
-           Project: Vprofile 
-           Owner: "Devops Team"
+        # tags:
+        #    Name: "Bastion Host"
+        #    Project: Vprofile 
+        #    Owner: "Devops Team"
         exact_count: 1
         count_tag: 
           Name: "Bastion Host"
