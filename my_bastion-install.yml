@@ -29,6 +29,7 @@
         name: Bastion-host-sg
         description: Allow port 22 from my ip address  
         region: "{{region}}"
+        vpc_id: "{{vpcid}}"  
         rules:
           - proto: tcp
             from_port: 22
@@ -37,7 +38,7 @@
       register: BastionSG_out
     
     - name: Create Bastion host
-      ec2:
+      ec2_intance:
         key_name: bastion-key 
         region: "{{region}}"
         instance_type: t2.micro
