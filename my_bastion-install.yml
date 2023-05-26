@@ -46,7 +46,7 @@
         wait: yes
         wait_timeout: 300
         instance_tags:
-         - Name: "Bastion Host"
+           Name: "Bastion Host"
            Project: Vprofile 
            Owner: "Devops Team"
         exact_count: 1
