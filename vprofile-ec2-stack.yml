@@ -39,12 +39,12 @@
             from_port: 443 
             to_port: 443
             cidr_block: 0.0.0.0/0
-      register: elb-sg_out     
+      register: elbSG_out     
 
 
     - name: Create Security Group for Vprofile Stack
       ec2_group: 
-        name: vprofile-sg
+        name: vprofileSG
         region: "{{region}}"
         vpc_id: "{{vpcid}}"
         state: "{{state}}"
@@ -57,7 +57,7 @@
             from_port: 22
             to_port: 2
             gateway_id: "{{BastionSGid}}" 
-      register: vprofile-sg_out
+      register: vprofileSG_out
         
 
     - name: Update Security Group with its own sg id 
