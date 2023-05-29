@@ -47,7 +47,6 @@
         name: vprofileSG
         region: "{{region}}"
         vpc_id: "{{vpcid}}"
-        state: "{{state}}"
         rules: 
           - proto: tcp
             from_port: 80
