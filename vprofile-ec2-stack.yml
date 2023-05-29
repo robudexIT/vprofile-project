@@ -86,7 +86,7 @@
           Name: "web01"
           Project: Vprofile
           Owner: Devops Team
-      register: web01_out  
+      register: web01_out.instances[0].network_interfaces[0].private_ip_address  
   
 
     - name: Debug Instance private ip address
@@ -151,11 +151,13 @@
           Name: "db01" 
           Project: Vprofile 
           Owner: Devops Team 
+        region: "{{region}}"
       register: db01_out
     
     - name: Debug Instance private ip address
       debug:
-       var: db01_out
+       var: db01_out.instances[0].network_interfaces[0].private_ip_address
+
 
 
     # - name: Insert/Update Hosts IP and Name in file provision-stack/group_vars/hostip
