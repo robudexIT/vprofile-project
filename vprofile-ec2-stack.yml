@@ -22,7 +22,7 @@
         content: "{{vprofilekey_out.key.private_key}}"
         dest: "./loginkey_vpro.pem" 
         mode: 0600
-      when: vprofile-key_out.changed
+      when: vprofilekey_out.changed
 
     - name: Create Security Group for Load Balancer
       ec2_group:
