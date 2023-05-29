@@ -140,7 +140,7 @@
       register: rmq01_out  
        
     - name: Create Mysql db01
-      ec2_instace:
+      ec2_instance:
         name: "db01"
         key_name: vprofilekey 
         instance_type: "t2.micro" 
