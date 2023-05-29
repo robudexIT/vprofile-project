@@ -30,7 +30,6 @@
         description: This security_group is used by Load Balancer
         region: "{{region}}"
         vpc_id: "{{vpcid}}"
-        state: "{{state}}"
         rules: 
           - proto: tcp
             from_port: 80
