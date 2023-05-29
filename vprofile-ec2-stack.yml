@@ -19,10 +19,10 @@
 
     - name: Save private key into file loginkey_vpro.pem 
       copy: 
-        content: "{{vprofile-key_out.key.private_key}}"
+        content: "{{vprofilekey_out.key.private_key}}"
         dest: "./loginkey_vpro.pem" 
         mode: 0600
-      when:  vprofile-key_out.changed
+      when: vprofile-key_out.changed
 
     - name: Create Security Group for Load Balancer
       ec2_group:
