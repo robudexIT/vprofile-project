@@ -87,16 +87,77 @@
           Project: Vprofile
           Owner: Devops Team
       register: web01_out  
+  
 
     - name: Debug Instance private ip address
       debug:
-       var: web01_out.instances.network_interfaces.private_ip_address
+       var: web01_out
         
       
-    # - name: Create tomcat app01
-    # - name: Create memcache mc01
-    # - name: Create RabbitMQ rmq01
-    # - name: Create Mysql db01
+    - name: Create tomcat app01
+      ec2_instance:
+        name: app01
+        instance_type: "t2.micro"
+        image_id: "{{tomcat_ami}}"
+        key_name: vprofilekey
+        security_group: vprofileSG
+        vpc_subnet_id: "{{privsub1id}}"
+        tags: 
+          Name: "app01"
+          Project: Vprofile
+          Owner: Devops Team
+        region: "{{region}}"
+      register: app01_out
+        
+    - name: Create memcache mc01
+      ec2_instance:
+        name: "mc01"
+        instance_type: "t2.micro"
+        key_name: vprofilekey
+        image_id: "{{memcache_ami}}"
+        vpc_subnet_id: "{{privsub1id}}"
+        security_group: vprofileSG
+        tags: 
+          Name: "mc01"
+          Project: Vprofile
+          Owner: Devops Team
+        region: "{{region}}"
+      register: mc01_out
+
+    - name: Create RabbitMQ rmq01
+      ec2_instance:
+        name: "rmq01"
+        key_name: vprofilekey
+        image_id: "{{rmq_ami}}"
+        instance_type: "t2.micro"
+        vpc_subnet_id: "{{privsub1id}}"
+        security_group: vprofileSG
+        tags:
+          Name: "rmq01"
+          Project: Vprofile 
+          Owner: Devops Team
+        region: "{{region}}"
+      register: rmq01_out  
+       
+    - name: Create Mysql db01
+      ec2_instace:
+        name: "db01"
+        key_name: vprofilekey 
+        instance_type: "t2.micro" 
+        image_id: "{{mysql_ami}}"
+        vpc_subnet_id: "{{privsub1id}}"
+        security_group: vprofileSG
+        tags: 
+          Name: "db01" 
+          Project: Vprofile 
+          Owner: Devops Team 
+      register: db01_out
+    
+    - name: Debug Instance private ip address
+      debug:
+       var: db01_out
+
+
     # - name: Insert/Update Hosts IP and Name in file provision-stack/group_vars/hostip
     # - name: Copy login key to provision stack directory
     # - name: Insert/Update Inventory file provision-stack/inventory-vpro
