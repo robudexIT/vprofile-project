@@ -20,3 +20,7 @@ zone2: us-east-2b
 zone3: us-east-2c
 
 state: present
+
+# Bastion Host variables
+my_bastion_ami: "ami-01107263728f3bef4"
+my_ip: "49.146.153.8/32"

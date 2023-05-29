@@ -1,0 +1,97 @@
+---
+- name: Setup Vprofile Stack
+  hosts: localhost
+  connection: local 
+  gather_facts: False 
+  tasks: 
+    - name: Import VPC setup variables 
+      include_vars: vars/vpc-output_vars
+
+    - name: Import vprofile setup Variables
+      include_vars: vars/my_vprofile_ec2_setup.yml
+
+    - name: Create vporfile ec2 key
+      ec2_key:
+        name: vprofilekey
+        region: {{region}}
+      register: vprofilekey_out
+
+    - name: Save private key into file loginkey_vpro.pem 
+      copy: 
+        content: "{{vprofile-key-out.key.private_key}}"
+        dest: "./loginkey_vpro.pem" 
+        mode: 0600
+      when:  vprofile-key-out.changed
+
+    - name: Create Security Group for Load Balancer
+      ec2_group:
+        name: elb-sg 
+        description: This security_group is used by Load Balancer
+        region: "{{region}}"
+        vpc_id: "{{vpcid}}"
+        state: "{{state}}"
+        rules: 
+          - proto: tcp
+            from_port: 80
+            to_port: 80 
+            cidr_block: 0.0.0.0/0
+          - proto: 443
+            from_port: 443 
+            to_port: 443
+            cidr_block: 0.0.0.0/0
+      register: elb-sg_out     
+
+
+    - name: Create Security Group for Vprofile Stack
+      ec2_group: 
+        name: vprofile-sg
+        region: "{{region}}"
+        vpc_id: "{{vpcid}}"
+        state: "{{state}}"
+        rules: 
+          - proto: tcp
+            from_port: 80
+            to_port: 80
+            group_id: "{{elb-sg_out.group_id}}"
+          - proto: tcp
+            from_port: 22
+            to_port: 2
+            gateway_id: "{{BastionSGid}}" 
+      register: vprofile-sg_out
+        
+
+    - name: Update Security Group with its own sg id 
+      ec2_group:
+        name: vprofile-sg 
+        region: "{{region}}"
+        vpc_id: "{{region}}"
+        purge_rules: no
+        rules:
+         - proto: all 
+           group_id: "{{vprofile-sg_out.group_id}}"
+
+         
+    - name: Create Nginx web01
+      ec2_instance:
+        name: web01
+        instance_type: "t2.micro"
+        region: "{{region}}"
+        vpc_subnet_id: "{{privsub1id}}"
+        image_id: "{{nginx_ami}}"
+        key_name: vprofilekey
+        security_group: vprofile-sg
+        tags: 
+          Name: "web01"
+          Project: Vprofile
+          Owner: Devops Team
+      register: web01_out  
+
+        
+      
+    # - name: Create tomcat app01
+    # - name: Create memcache mc01
+    # - name: Create RabbitMQ rmq01
+    # - name: Create Mysql db01
+    # - name: Insert/Update Hosts IP and Name in file provision-stack/group_vars/hostip
+    # - name: Copy login key to provision stack directory
+    # - name: Insert/Update Inventory file provision-stack/inventory-vpro
