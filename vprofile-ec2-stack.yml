@@ -86,6 +86,9 @@
           Owner: Devops Team
       register: web01_out  
 
+    - name: Debug Instance private ip address
+      debug:
+       var: web01_out.instances.network_interfaces.private_ip_address
         
       
     # - name: Create tomcat app01
