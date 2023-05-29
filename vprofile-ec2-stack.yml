@@ -45,6 +45,7 @@
     - name: Create Security Group for Vprofile Stack
       ec2_group: 
         name: vprofileSG
+        description: Security Group for Vprofile Stack
         region: "{{region}}"
         vpc_id: "{{vpcid}}"
         state: present
