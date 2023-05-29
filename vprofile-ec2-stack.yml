@@ -55,7 +55,7 @@
           - proto: tcp
             from_port: 22
             to_port: 2
-            gateway_id: "{{BastionSGid}}" 
+            group_id: "{{BastionSGid}}" 
       register: vprofileSG_out
         
 
