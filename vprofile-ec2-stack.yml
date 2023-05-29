@@ -63,13 +63,13 @@
 
     - name: Update Security Group with its own sg id 
       ec2_group:
-        name: vprofile-sg 
+        name:  vprofileSG
         region: "{{region}}"
         vpc_id: "{{region}}"
         purge_rules: no
         rules:
          - proto: all 
-           group_id: "{{vprofile-sg_out.group_id}}"
+           group_id: "{{vprofileSG_out.group_id}}"
 
          
     - name: Create Nginx web01
@@ -80,7 +80,7 @@
         vpc_subnet_id: "{{privsub1id}}"
         image_id: "{{nginx_ami}}"
         key_name: vprofilekey
-        security_group: vprofile-sg
+        security_group: vprofileSG
         tags: 
           Name: "web01"
           Project: Vprofile
