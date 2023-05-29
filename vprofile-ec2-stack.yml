@@ -12,7 +12,7 @@
 
     - name: Create vporfile ec2 key
       ec2_key:
-        key_name: vprofilekey
+        name: vprofilekey
         region: "{{region}}"
       register: vprofilekey_out
 
