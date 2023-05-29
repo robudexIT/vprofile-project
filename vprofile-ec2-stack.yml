@@ -56,7 +56,7 @@
             group_id: "{{elbSG_out.group_id}}"
           - proto: tcp
             from_port: 22
-            to_port: 2
+            to_port: 22
             group_id: "{{BastionSGid}}" 
       register: vprofileSG_out
         
