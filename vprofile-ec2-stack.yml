@@ -47,6 +47,7 @@
         name: vprofileSG
         region: "{{region}}"
         vpc_id: "{{vpcid}}"
+        state: present
         rules: 
           - proto: tcp
             from_port: 80
