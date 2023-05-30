@@ -61,16 +61,19 @@
       register: bastHostout 
 
     - name: Update and Install ansible 
-      apt: 
+      apt:
+        hosts: "{{bastHostout.instances[0].network_interfaces[0].private_ip_address}}" 
         name: ansible
         state: present 
         update_cache: true
+      when: bastHostout.instances[0].network_interfaces[0].private_ip_address != ""
 
     - name: Install git 
+      hosts: "{{bastHostout.instances[0].network_interfaces[0].private_ip_address}}"
       apt:
         name: git
         state: present 
-
+      when: bastHostout.instances[0].network_interfaces[0].private_ip_address != ""
     - name: Clone Vprofile lastest repository
       command: 
         cmd: git clone https://github.com/robudexIT/vprofile-project.git
