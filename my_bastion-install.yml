@@ -61,8 +61,8 @@
       register: bastHostout 
 
     - name: Update and Install ansible 
-      apt:
-        hosts: "{{bastHostout.instances[0].network_interfaces[0].private_ip_address}}" 
+      hosts: "{{bastHostout.instances[0].network_interfaces[0].private_ip_address}}"
+      apt: 
         name: ansible
         state: present 
         update_cache: true
