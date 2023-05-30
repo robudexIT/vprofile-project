@@ -1,0 +1,176 @@
+web01.out.instances[0].network_interfaces[0].private_ip_address
+{
+    "web01_out": {
+        "changed": true,
+        "failed": false,
+        "instance_ids": [
+            "i-09e8fb1ec5723f655"
+        ],
+        "instances": [
+            {
+                "ami_launch_index": 0,
+                "architecture": "x86_64",
+                "block_device_mappings": [
+                    {
+                        "device_name": "/dev/sda1",
+                        "ebs": {
+                            "attach_time": "2023-05-29T12:40:23+00:00",
+                            "delete_on_termination": true,
+                            "status": "attached",
+                            "volume_id": "vol-05634b092bc05ecdb"
+                        }
+                    }
+                ],
+                "capacity_reservation_specification": {
+                    "capacity_reservation_preference": "open"
+                },
+                "client_token": "1f92c4bc4ba548538caecb111f97d1d1",
+                "cpu_options": {
+                    "core_count": 1,
+                    "threads_per_core": 1
+                },
+                "ebs_optimized": false,
+                "ena_support": true,
+                "hibernation_options": {
+                    "configured": false
+                },
+                "hypervisor": "xen",
+                "image_id": "ami-07efac79022b86107",
+                "instance_id": "i-09e8fb1ec5723f655",
+                "instance_type": "t2.micro",
+                "key_name": "vprofilekey",
+                "launch_time": "2023-05-29T12:40:22+00:00",
+                "metadata_options": {
+                    "http_endpoint": "enabled",
+                    "http_put_response_hop_limit": 1,
+                    "http_tokens": "optional",
+                    "state": "applied"
+                },
+                "monitoring": {
+                    "state": "disabled"
+                },
+                "network_interfaces": [
+                    {
+                        "attachment": {
+                            "attach_time": "2023-05-29T12:40:22+00:00",
+                            "attachment_id": "eni-attach-04cbf4c6eb4116a60",
+                            "delete_on_termination": true,
+                            "device_index": 0,
+                            "status": "attached"
+                        },
+                        "description": "",
+                        "groups": [
+                            {
+                                "group_id": "sg-08c441cc5463dffd0",
+                                "group_name": "vprofileSG"
+                            }
+                        ],
+                        "interface_type": "interface",
+                        "ipv6_addresses": [],
+                        "mac_address": "02:ff:aa:f9:1a:75",
+                        "network_interface_id": "eni-04b3a8f99da4ff971",
+                        "owner_id": "427875724091",
+                        "private_dns_name": "ip-10-0-4-181.us-east-2.compute.internal",
+                        "private_ip_address": "10.0.4.181",
+                        "private_ip_addresses": [
+                            {
+                                "primary": true,
+                                "private_dns_name": "ip-10-0-4-181.us-east-2.compute.internal",
+                                "private_ip_address": "10.0.4.181"
+                            }
+                        ],
+                        "source_dest_check": true,
+                        "status": "in-use",
+                        "subnet_id": "subnet-0d6ac96ff756169a2",
+                        "vpc_id": "vpc-0043cddd54da8c5d3"
+                    }
+                ],
+                "placement": {
+                    "availability_zone": "us-east-2a",
+                    "group_name": "",
+                    "tenancy": "default"
+                },
+                "private_dns_name": "ip-10-0-4-181.us-east-2.compute.internal",
+                "private_ip_address": "10.0.4.181",
+                "product_codes": [],
+                "public_dns_name": "",
+                "root_device_name": "/dev/sda1",
+                "root_device_type": "ebs",
+                "security_groups": [
+                    {
+                        "group_id": "sg-08c441cc5463dffd0",
+                        "group_name": "vprofileSG"
+                    }
+                ],
+                "source_dest_check": true,
+                "state": {
+                    "code": 16,
+                    "name": "running"
+                },
+                "state_transition_reason": "",
+                "subnet_id": "subnet-0d6ac96ff756169a2",
+                "tags": {
+                    "Name": "web01",
+                    "Owner": "Devops Team",
+                    "Project": "Vprofile"
+                },
+                "virtualization_type": "hvm",
+                "vpc_id": "vpc-0043cddd54da8c5d3"
+            }
+        ],
+        "spec": {
+            "BlockDeviceMappings": [],
+            "ClientToken": "1f92c4bc4ba548538caecb111f97d1d1",
+            "ImageId": "ami-07efac79022b86107",
+            "InstanceType": "t2.micro",
+            "KeyName": "vprofilekey",
+            "MaxCount": 1,
+            "MinCount": 1,
+            "NetworkInterfaces": [
+                {
+                    "DeviceIndex": 0,
+                    "Groups": [
+                        "sg-08c441cc5463dffd0"
+                    ],
+                    "SubnetId": "subnet-0d6ac96ff756169a2"
+                }
+            ],
+            "TagSpecifications": [
+                {
+                    "ResourceType": "volume",
+                    "Tags": [
+                        {
+                            "Key": "Name",
+                            "Value": "web01"
+                        },
+                        {
+                            "Key": "Project",
+                            "Value": "Vprofile"
+                        },
+                        {
+                            "Key": "Owner",
+                            "Value": "Devops Team"
+                        }
+                    ]
+                },
+                {
+                    "ResourceType": "instance",
+                    "Tags": [
+                        {
+                            "Key": "Name",
+                            "Value": "web01"
+                        },
+                        {
+                            "Key": "Project",
+                            "Value": "Vprofile"
+                        },
+                        {
+                            "Key": "Owner",
+                            "Value": "Devops Team"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
