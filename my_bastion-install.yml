@@ -3,6 +3,8 @@
   hosts: localhost
   connection: local 
   gather_facts: True
+  become: yes
+  become_user: root
 
   tasks:
     - name: Import VPC setup variables
@@ -58,6 +60,22 @@
         vpc_subnet_id: "{{pubsub1id}}"
       register: bastHostout 
 
+    - name: Update and Install ansible 
+      apt: 
+        name: ansible
+        state: present 
+        update_cache: true
+
+    - name: Install git 
+      apt:
+        name: git
+        state: present 
+
+    - name: Clone Vprofile lastest repository
+      command: 
+        cmd: git clone https://github.com/robudexIT/vprofile-project.git
+        
+         
     - name: Insert/Update "BastionSGid" in vars/vpc-output_vars  
       blockinfile:
         path: vars/vpc-output_vars
