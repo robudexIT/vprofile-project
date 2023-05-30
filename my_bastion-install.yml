@@ -50,7 +50,7 @@
         region: "{{region}}"
         instance_type: t2.micro
         # image_id: "{{my_bastion_ami}}"
-        image: ami-07efac79022b86107
+        image_id: ami-07efac79022b86107
         wait: true
         wait_timeout: 300
         tags:
