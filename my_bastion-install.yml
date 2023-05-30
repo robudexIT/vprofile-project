@@ -66,7 +66,7 @@
         state: present 
         update_cache: true
         delegate_to: "{{bastHostout.instances[0].network_interfaces[0].private_ip_address}}"
-      when: bastHostout.instances[0].network_interfaces[0].private_ip_address != ""
+      when: {{bastHostout.instances[0].network_interfaces[0].private_ip_address}} != ""
 
     - name: Install git 
       hosts: "{{bastHostout.instances[0].network_interfaces[0].private_ip_address}}"
@@ -74,13 +74,13 @@
         name: git
         state: present 
         delegate_to: "{{bastHostout.instances[0].network_interfaces[0].private_ip_address}}"
-      when: bastHostout.instances[0].network_interfaces[0].private_ip_address != ""
+      when: {{bastHostout.instances[0].network_interfaces[0].private_ip_address}} != ""
   
     - name: Clone Vprofile lastest repository
       command: 
         cmd: git clone https://github.com/robudexIT/vprofile-project.git
         delegate_to: "{{bastHostout.instances[0].network_interfaces[0].private_ip_address}}"
-       when: bastHostout.instances[0].network_interfaces[0].private_ip_address != ""  
+       when: {{bastHostout.instances[0].network_interfaces[0].private_ip_address}} != ""  
         
          
     - name: Insert/Update "BastionSGid" in vars/vpc-output_vars  
