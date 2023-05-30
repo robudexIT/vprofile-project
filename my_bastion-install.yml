@@ -61,7 +61,7 @@
       register: bastHostout 
     
     - name: Get Instance Metadata
-        debug:
+      debug:
          var: bastHostout
 
     - name: Update and Install ansible 
