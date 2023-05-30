@@ -49,8 +49,7 @@
         key_name: bastion-key 
         region: "{{region}}"
         instance_type: t2.micro
-        # image_id: "{{my_bastion_ami}}"
-        image_id: ami-07efac79022b86107
+        image_id: "{{my_bastion_ami}}"
         wait: true
         wait_timeout: 300
         tags:
