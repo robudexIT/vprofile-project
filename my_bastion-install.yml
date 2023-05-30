@@ -59,6 +59,9 @@
         security_group : "{{BastionSG_out.group_id}}"
         vpc_subnet_id: "{{pubsub1id}}"
       register: bastHostout 
+    - debug:
+        name: Get Instance Metadata
+        vars: bastHostout
 
     - name: Update and Install ansible 
       apt: 
