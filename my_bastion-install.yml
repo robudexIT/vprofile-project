@@ -84,7 +84,7 @@
         state: present 
       delegate_to: "{{bastHostout.instances[0].public_ip_address}}"
       when: bastHostout.instances[0].public_ip_address 
-  
+     
     - name: Clone Vprofile lastest repository
       command: 
         cmd: git clone https://github.com/robudexIT/vprofile-project.git
