@@ -72,7 +72,7 @@
     # This block of code is for task delegation
     - name: Update and Install ansible git awscli python3-botocore python3-boto python3-boto3
       apt: 
-        name: {{item}}
+        name: "{{item}}"
         state: present 
         update_cache: true
       loop: 
