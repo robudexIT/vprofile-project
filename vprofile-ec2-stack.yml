@@ -20,7 +20,7 @@
     - name: Save private key into file loginkey_vpro.pem 
       copy: 
         content: "{{vprofilekey_out.key.private_key}}"
-        dest: "./loginkey_vpro.pem" 
+        dest: "./vprofilekey.pem" 
         mode: 0600
       when: vprofilekey_out.changed
 
