@@ -70,20 +70,27 @@
          var: bastHostout
          
     # This block of code is for task delegation
-    - name: Update and Install ansible 
+    - name: Update and Install ansible git awscli python3-botocore python3-boto python3-boto3
       apt: 
-        name: ansible
+        name: {{item}}
         state: present 
         update_cache: true
+      loop: 
+       - ansible
+       - git
+       - awscli 
+       - python3-boto
+       - python3-boto3 
+       - python3-botocore 
       delegate_to: "{{bastHostout.instances[0].public_ip_address }}"
       when: bastHostout.instances[0].public_ip_address 
 
-    - name: Install git 
-      apt:
-        name: git
-        state: present 
-      delegate_to: "{{bastHostout.instances[0].public_ip_address}}"
-      when: bastHostout.instances[0].public_ip_address 
+    # - name: Install git 
+    #   apt:
+    #     name: git
+    #     state: present 
+    #   delegate_to: "{{bastHostout.instances[0].public_ip_address}}"
+    #   when: bastHostout.instances[0].public_ip_address 
      
     - name: Clone Vprofile lastest repository
       command: 
@@ -100,5 +107,7 @@
         backup: yes
         block: |
           BastionSGid: {{BastionSG_out.group_id}}
+    
+    
           
           
