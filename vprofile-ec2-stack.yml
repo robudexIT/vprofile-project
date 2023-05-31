@@ -157,6 +157,7 @@
     - name: Debug Instance private ip address
       debug:
        var: db01_out.instances[0].network_interfaces[0].private_ip_address
+      #  createing elb
     - local_action:
         module: ec2_elb_lb
         region: "{{region}}"
