@@ -68,7 +68,8 @@
     - name: Get Instance Metadata
       debug:
          var: bastHostout
-
+         
+    # This block of code is for task delegation
     - name: Update and Install ansible 
       apt: 
         name: ansible
@@ -88,6 +89,8 @@
       command: 
         cmd: git clone https://github.com/robudexIT/vprofile-project.git
       delegate_to: "{{bastHostout.instances[0].public_ip_address}}"
+      become: true
+      become_user: ubuntu
       when: bastHostout.instances[0].public_ip_address  
         
          
