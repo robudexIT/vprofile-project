@@ -159,6 +159,7 @@
        var: db01_out.instances[0].network_interfaces[0].private_ip_address
     - local_action:
         module: ec2_elb_lb
+        region: "{{region}}"
         state: present
         name: vprofileELB
         instance_ids:
