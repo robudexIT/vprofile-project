@@ -4,6 +4,13 @@
   gather_facts: no 
   
   tasks:
+    - name: Show db user password and host 
+      debug: 
+        var: "{{item}}"
+      loop: 
+        - "{{dbuser}}"
+        - "{{dbpass}}"
+        - "{{dbname}}"
     - name: Installing Mysql Service and dependies
       apt:
         name: "{{item}}"
