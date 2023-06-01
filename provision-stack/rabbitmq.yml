@@ -50,7 +50,7 @@
       service: 
         name: rabbitmq-server 
         state: started 
-        enable: yes 
+        enabled: yes 
       tags: 
         - svc 
 

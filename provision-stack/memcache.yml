@@ -16,7 +16,7 @@
       service: 
         name: memcached 
         stated: started  
-        enable: yes 
+        enabled: yes 
       tags: 
         - svc 
 
