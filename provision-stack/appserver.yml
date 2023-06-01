@@ -57,7 +57,7 @@
         path: /usr/local/tomcat8 
         owner: tomcat 
         group: tomcat 
-        recursive: yes 
+        recurse: yes 
 
     - name: Setup or Create tomcat SVC on ubuntu 16 and 18
       template: 
