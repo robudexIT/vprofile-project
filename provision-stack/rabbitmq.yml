@@ -42,12 +42,40 @@
 
     - name: Install erlang 
       apt: 
-        name: erlang 
+        name: "{{item}}"
         state: present 
         update_cache: yes 
         cache_valid_time: 86400 
+      loop: 
+       - erlang-base
+       - erlang-asn1
+       - erlang-crypto
+       - erlang-eldap
+       - erlang-ftp
+       - erlang-inets
+       - erlang-mnesia
+       - erlang-os-mon
+       - erlang-parsetools
+       - erlang-public-key
+       - erlang-runtime-tools
+       - erlang-snmp
+       - erlang-ssl
+       - erlang-syntax-tools
+       - erlang-tftp
+       - erlang-tools
+       - erlang-xmerl
       tags: 
-        - package 
+       - package 
+
+    # - name: Install erlang 
+    #   apt: 
+    #     name: erlang 
+    #     state: present 
+    #     update_cache: yes 
+    #     cache_valid_time: 86400 
+    #   tags: 
+    #     - package 
+
 
     # - name: Add an Apt signing key, uses whichever key is at the URL
     #   apt_key:
@@ -67,13 +95,14 @@
         name: rabbitmq-server 
         state: present 
         update_cache: yes 
+        dpkg_options: fix-missing
       tags: 
         - package 
     
     - name: Start and Enable RMQ 
       service: 
         name: rabbitmq-server 
-        state: started 
+        state: started
         enabled: yes 
       tags: 
         - svc 
