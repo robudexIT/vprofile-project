@@ -3,6 +3,7 @@
   hosts: rmqsrvgrp
   gather_facts: no 
   tasks: 
+    
     # - name: Install Erlang Repository package 
     #   apt:
     #      deb: https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb
@@ -15,6 +16,21 @@
     #     state: present 
     #   tags: 
     #     - package 
+    - name: Install dependies 
+      apt: 
+        name: "{{item}}"
+        state: present 
+        update_cache: yes
+      loop: 
+       - curl
+       - gnupg 
+       - apt-transport-https
+       - ca-certificates
+
+    - name:  Keys must be added to the system.
+      shell: mq.sh
+      args:
+       chdir: templates/
     - name: Copy rabbitmq.list to /etc/apt/sources.list.d of the rmqsrvgrp hosts 
       become: yes
       copy: 
