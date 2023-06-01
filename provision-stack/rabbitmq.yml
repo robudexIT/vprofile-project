@@ -22,7 +22,8 @@
         dest: /etc/apt/sources.list.d/rabbitmq.list 
         owner: root 
         group: root
-        
+        remote_src: no
+
     - name: Install erlang 
       apt: 
         name: erlang 
