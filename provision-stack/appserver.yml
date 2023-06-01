@@ -68,7 +68,7 @@
 
     - name: Force systemd to reload configs (2.4 and above)
       systemd:   
-        deamon_reload: yes
+        daemon_reload: yes
 
     - name: Start and Enable tomcat8 SVC
       service: 
