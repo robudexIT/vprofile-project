@@ -13,7 +13,7 @@
       loop: 
         - mysql-server
         - mysql-client
-        - python-mysqldb
+        # - python-mysqldb
         - python3-mysqldb
         - libmysqlclient-dev
      # ignore_erros: yes
