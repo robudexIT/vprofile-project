@@ -26,11 +26,21 @@
        - gnupg 
        - apt-transport-https
        - ca-certificates
+    - name: Copy mq.sh to /root of the remote hosts 
+      become: yes
+      copy: 
+        src: templates/mq.sh
+        dest: /root/mq.sh 
+        owner: root 
+        group: root
+        mode: 777
+        remote_src: no
 
-    - name:  Keys must be added to the system.
+    - name:  Execute mq.sh
       shell: mq.sh
       args:
-       chdir: templates/
+       chdir: ~
+       
     - name: Copy rabbitmq.list to /etc/apt/sources.list.d of the rmqsrvgrp hosts 
       become: yes
       copy: 
