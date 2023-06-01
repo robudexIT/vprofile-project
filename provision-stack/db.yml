@@ -5,7 +5,7 @@
   
   tasks:
     - name: Installing Mysql Service and dependies
-      apt:
+      package:
         name: "{{item}}"
         state: present
         update_cache: yes 
