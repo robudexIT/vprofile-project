@@ -37,10 +37,10 @@
         remote_src: no
 
     - name:  Execute mq.sh
-      shell: mq.sh
-      args:
-       chdir: ~
-       
+      become: yes
+      shell: /root/mq.sh
+
+
     - name: Copy rabbitmq.list to /etc/apt/sources.list.d of the rmqsrvgrp hosts 
       become: yes
       copy: 
