@@ -16,7 +16,7 @@
         - python-mysqldb
         - python3-mysqldb
         - libmysqlclient-dev
-      ignore_erros: yes
+     # ignore_erros: yes
       tags: 
         - package
 
