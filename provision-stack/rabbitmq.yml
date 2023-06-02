@@ -20,7 +20,8 @@
     - name: Install  ca-certificates
       apt: 
        name: ca-certificates 
-       state: present
+       state: latest
+       update_cache: yes
 
     - name: Install dependies 
       apt: 
@@ -105,10 +106,7 @@
     #     state: present
     #   tags:
     #     - package        
-    - name: Install  ca-certificates
-      apt: 
-       name: ca-certificates 
-       state: present
+
 
     - name: Install Rabbit MQ 
       apt: 
