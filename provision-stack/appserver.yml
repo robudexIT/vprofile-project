@@ -122,7 +122,7 @@
           block:
             - name: Deploy vprofile 
               copy: 
-                src: file/ROOT.war 
+                src: files/ROOT.war 
                 dest: /usr/local/tomcat8/webapps/ROOT.war 
               register: deploy_info
               tags: 
