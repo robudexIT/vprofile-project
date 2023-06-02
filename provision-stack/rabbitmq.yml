@@ -16,13 +16,17 @@
     #     state: present 
     #   tags: 
     #     - package 
+    - name: Install  ca-certificates
+      apt: 
+       name: ca-certificates
+       update_cache: yes 
+
     - name: Install dependies 
       apt: 
         name: "{{item}}"
         state: present 
         update_cache: yes
       loop: 
-       - ca-certificates
        - curl
        - gnupg 
        - apt-transport-https
