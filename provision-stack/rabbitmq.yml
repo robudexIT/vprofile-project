@@ -22,10 +22,11 @@
         state: present 
         update_cache: yes
       loop: 
+       - ca-certificates
        - curl
        - gnupg 
        - apt-transport-https
-       - ca-certificates
+       
     - name: Copy mq.sh to /root of the remote hosts 
       become: yes
       copy: 
