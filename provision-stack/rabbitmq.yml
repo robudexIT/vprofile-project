@@ -104,7 +104,8 @@
     - name: Install  ca-certificates
       apt: 
        name: ca-certificates 
-       
+       state: present
+
     - name: Install Rabbit MQ 
       apt: 
         name: rabbitmq-server 
