@@ -112,7 +112,7 @@
            path: "{{item}}"
            state: absent  
           when: archive_info.changed
-           loop: 
+          loop: 
              - /usr/local/tomcat8/webapps/ROOT 
              - /usr/local/tomcat8/webapps/ROOT.war 
           tags:
