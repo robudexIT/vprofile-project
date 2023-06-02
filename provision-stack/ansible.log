@@ -1,0 +1,151 @@
+2023-06-02 16:44:33,327 p=3029 u=ubuntu n=ansible | PLAY [Generate artifact , copy artifact and sql file to files directory] *********************************************************************
+2023-06-02 16:44:33,343 p=3029 u=ubuntu n=ansible | TASK [Gathering Facts] ***********************************************************************************************************************
+2023-06-02 16:44:34,602 p=3029 u=ubuntu n=ansible | ok: [localhost]
+2023-06-02 16:44:34,628 p=3029 u=ubuntu n=ansible | TASK [install ansible jdk, maven and git] ****************************************************************************************************
+2023-06-02 16:44:48,713 p=3029 u=ubuntu n=ansible | ok: [localhost] => (item=ansible)
+2023-06-02 16:44:50,780 p=3029 u=ubuntu n=ansible | ok: [localhost] => (item=git)
+2023-06-02 16:45:34,118 p=3029 u=ubuntu n=ansible | changed: [localhost] => (item=openjdk-8-jdk)
+2023-06-02 16:45:48,183 p=3029 u=ubuntu n=ansible | changed: [localhost] => (item=maven)
+2023-06-02 16:45:48,196 p=3029 u=ubuntu n=ansible | TASK [Clone source code from github] *********************************************************************************************************
+2023-06-02 16:46:12,314 p=3029 u=ubuntu n=ansible | changed: [localhost]
+2023-06-02 16:46:12,324 p=3029 u=ubuntu n=ansible | TASK [mvn install command to build artifact] *************************************************************************************************
+2023-06-02 16:46:51,116 p=3029 u=ubuntu n=ansible | changed: [localhost]
+2023-06-02 16:46:51,128 p=3029 u=ubuntu n=ansible | TASK [Copy artifact to files directory] ******************************************************************************************************
+2023-06-02 16:46:52,342 p=3029 u=ubuntu n=ansible | failed: [localhost] (item=/home/ubuntu/vprofile-project/provision-stack/Vprofile-sourcecode/target/vprofile-v2.war) => {"ansible_loop_var": "item", "changed": false, "checksum": "caa49bc1f069a5b956bc0c4bde1a51f890aec08b", "item": "/home/ubuntu/vprofile-project/provision-stack/Vprofile-sourcecode/target/vprofile-v2.war", "msg": "Destination directory files does not exist"}
+2023-06-02 16:46:52,347 p=3029 u=ubuntu n=ansible | PLAY RECAP ***********************************************************************************************************************************
+2023-06-02 16:46:52,348 p=3029 u=ubuntu n=ansible | localhost                  : ok=4    changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-06-02 16:48:26,024 p=8422 u=ubuntu n=ansible | PLAY [Generate artifact , copy artifact and sql file to files directory] *********************************************************************
+2023-06-02 16:48:26,065 p=8422 u=ubuntu n=ansible | TASK [Gathering Facts] ***********************************************************************************************************************
+2023-06-02 16:48:27,355 p=8422 u=ubuntu n=ansible | ok: [localhost]
+2023-06-02 16:48:27,362 p=8422 u=ubuntu n=ansible | TASK [install ansible jdk, maven and git] ****************************************************************************************************
+2023-06-02 16:48:29,982 p=8422 u=ubuntu n=ansible | ok: [localhost] => (item=ansible)
+2023-06-02 16:48:31,884 p=8422 u=ubuntu n=ansible | ok: [localhost] => (item=git)
+2023-06-02 16:48:33,752 p=8422 u=ubuntu n=ansible | ok: [localhost] => (item=openjdk-8-jdk)
+2023-06-02 16:48:35,651 p=8422 u=ubuntu n=ansible | ok: [localhost] => (item=maven)
+2023-06-02 16:48:35,661 p=8422 u=ubuntu n=ansible | TASK [Clone source code from github] *********************************************************************************************************
+2023-06-02 16:48:36,607 p=8422 u=ubuntu n=ansible | ok: [localhost]
+2023-06-02 16:48:36,618 p=8422 u=ubuntu n=ansible | TASK [mvn install command to build artifact] *************************************************************************************************
+2023-06-02 16:48:36,667 p=8422 u=ubuntu n=ansible | skipping: [localhost]
+2023-06-02 16:48:36,675 p=8422 u=ubuntu n=ansible | TASK [Copy artifact to files directory] ******************************************************************************************************
+2023-06-02 16:48:37,669 p=8422 u=ubuntu n=ansible | changed: [localhost] => (item=/home/ubuntu/vprofile-project/provision-stack/Vprofile-sourcecode/target/vprofile-v2.war)
+2023-06-02 16:48:37,679 p=8422 u=ubuntu n=ansible | TASK [Copy SQl file to files directory] ******************************************************************************************************
+2023-06-02 16:48:38,073 p=8422 u=ubuntu n=ansible | changed: [localhost]
+2023-06-02 16:48:38,076 p=8422 u=ubuntu n=ansible | PLAY RECAP ***********************************************************************************************************************************
+2023-06-02 16:48:38,076 p=8422 u=ubuntu n=ansible | localhost                  : ok=5    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2023-06-02 16:49:31,631 p=9785 u=ubuntu n=ansible | PLAY [Set host to ip mapping in /etc/hosts file of all the instances in the stack] ***********************************************************
+2023-06-02 16:49:31,644 p=9785 u=ubuntu n=ansible | TASK [Gathering Facts] ***********************************************************************************************************************
+2023-06-02 16:49:33,337 p=9785 u=ubuntu n=ansible | ok: [cntl]
+2023-06-02 16:49:34,039 p=9785 u=ubuntu n=ansible | ok: [web01]
+2023-06-02 16:49:34,122 p=9785 u=ubuntu n=ansible | ok: [rmq01]
+2023-06-02 16:49:34,219 p=9785 u=ubuntu n=ansible | ok: [app01]
+2023-06-02 16:49:34,307 p=9785 u=ubuntu n=ansible | ok: [mc01]
+2023-06-02 16:49:37,863 p=9785 u=ubuntu n=ansible | ok: [db01]
+2023-06-02 16:49:37,873 p=9785 u=ubuntu n=ansible | TASK [Import host ip Variables] **************************************************************************************************************
+2023-06-02 16:49:37,922 p=9785 u=ubuntu n=ansible | ok: [cntl]
+2023-06-02 16:49:37,940 p=9785 u=ubuntu n=ansible | ok: [web01]
+2023-06-02 16:49:37,962 p=9785 u=ubuntu n=ansible | ok: [app01]
+2023-06-02 16:49:37,982 p=9785 u=ubuntu n=ansible | ok: [rmq01]
+2023-06-02 16:49:37,983 p=9785 u=ubuntu n=ansible | ok: [mc01]
+2023-06-02 16:49:37,992 p=9785 u=ubuntu n=ansible | ok: [db01]
+2023-06-02 16:49:37,999 p=9785 u=ubuntu n=ansible | TASK [Updats hosts file for all the hosts] ***************************************************************************************************
+2023-06-02 16:49:38,957 p=9785 u=ubuntu n=ansible | changed: [web01]
+2023-06-02 16:49:38,968 p=9785 u=ubuntu n=ansible | changed: [mc01]
+2023-06-02 16:49:38,969 p=9785 u=ubuntu n=ansible | changed: [rmq01]
+2023-06-02 16:49:38,969 p=9785 u=ubuntu n=ansible | changed: [app01]
+2023-06-02 16:49:39,044 p=9785 u=ubuntu n=ansible | changed: [cntl]
+2023-06-02 16:49:39,317 p=9785 u=ubuntu n=ansible | changed: [db01]
+2023-06-02 16:49:39,320 p=9785 u=ubuntu n=ansible | PLAY RECAP ***********************************************************************************************************************************
+2023-06-02 16:49:39,321 p=9785 u=ubuntu n=ansible | app01                      : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-06-02 16:49:39,321 p=9785 u=ubuntu n=ansible | cntl                       : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-06-02 16:49:39,321 p=9785 u=ubuntu n=ansible | db01                       : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-06-02 16:49:39,321 p=9785 u=ubuntu n=ansible | mc01                       : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-06-02 16:49:39,321 p=9785 u=ubuntu n=ansible | rmq01                      : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-06-02 16:49:39,322 p=9785 u=ubuntu n=ansible | web01                      : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-06-02 16:50:01,807 p=10029 u=ubuntu n=ansible | PLAY [Setup Mysql database with accounts db and remote login] ********************************************************************************
+2023-06-02 16:50:01,822 p=10029 u=ubuntu n=ansible | TASK [Show db user password and host] ********************************************************************************************************
+2023-06-02 16:50:01,879 p=10029 u=ubuntu n=ansible | ok: [db01] => (item=admin) => {
+    "admin": "VARIABLE IS NOT DEFINED!",
+    "ansible_loop_var": "item",
+    "item": "admin"
+}
+2023-06-02 16:50:01,881 p=10029 u=ubuntu n=ansible | ok: [db01] => (item=admin123) => {
+    "admin123": "VARIABLE IS NOT DEFINED!",
+    "ansible_loop_var": "item",
+    "item": "admin123"
+}
+2023-06-02 16:50:01,886 p=10029 u=ubuntu n=ansible | ok: [db01] => (item=accounts) => {
+    "accounts": "VARIABLE IS NOT DEFINED!",
+    "ansible_loop_var": "item",
+    "item": "accounts"
+}
+2023-06-02 16:50:01,891 p=10029 u=ubuntu n=ansible | TASK [Installing Mysql Service and dependies] ************************************************************************************************
+2023-06-02 16:51:46,095 p=10029 u=ubuntu n=ansible | changed: [db01] => (item=mysql-server)
+2023-06-02 16:51:56,760 p=10029 u=ubuntu n=ansible | changed: [db01] => (item=mysql-client)
+2023-06-02 16:52:06,771 p=10029 u=ubuntu n=ansible | changed: [db01] => (item=python3-mysqldb)
+2023-06-02 16:52:35,273 p=10029 u=ubuntu n=ansible | changed: [db01] => (item=libmysqlclient-dev)
+2023-06-02 16:52:35,283 p=10029 u=ubuntu n=ansible | TASK [Start and enable mysql.service] ********************************************************************************************************
+2023-06-02 16:52:36,873 p=10029 u=ubuntu n=ansible | ok: [db01]
+2023-06-02 16:52:36,879 p=10029 u=ubuntu n=ansible | TASK [Create mysl user] **********************************************************************************************************************
+2023-06-02 16:52:37,760 p=10029 u=ubuntu n=ansible | [WARNING]: Module did not set no_log for update_password
+
+2023-06-02 16:52:37,761 p=10029 u=ubuntu n=ansible | changed: [db01]
+2023-06-02 16:52:37,765 p=10029 u=ubuntu n=ansible | TASK [Enable remote login to mysql svc] ******************************************************************************************************
+2023-06-02 16:52:38,188 p=10029 u=ubuntu n=ansible | changed: [db01]
+2023-06-02 16:52:38,189 p=10029 u=ubuntu n=ansible | RUNNING HANDLER [Restart mysql] **************************************************************************************************************
+2023-06-02 16:52:42,167 p=10029 u=ubuntu n=ansible | changed: [db01]
+2023-06-02 16:52:42,170 p=10029 u=ubuntu n=ansible | PLAY RECAP ***********************************************************************************************************************************
+2023-06-02 16:52:42,171 p=10029 u=ubuntu n=ansible | db01                       : ok=6    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-06-02 16:53:55,997 p=10135 u=ubuntu n=ansible | PLAY [Deploy SQL file on accounts db] ********************************************************************************************************
+2023-06-02 16:53:56,011 p=10135 u=ubuntu n=ansible | TASK [Copy SQL to dbsrv] *********************************************************************************************************************
+2023-06-02 16:53:58,054 p=10135 u=ubuntu n=ansible | changed: [db01]
+2023-06-02 16:53:58,058 p=10135 u=ubuntu n=ansible | TASK [Restoring DB] **************************************************************************************************************************
+2023-06-02 16:53:59,217 p=10135 u=ubuntu n=ansible | changed: [db01]
+2023-06-02 16:53:59,218 p=10135 u=ubuntu n=ansible | RUNNING HANDLER [Restart mysql] **************************************************************************************************************
+2023-06-02 16:54:03,204 p=10135 u=ubuntu n=ansible | changed: [db01]
+2023-06-02 16:54:03,208 p=10135 u=ubuntu n=ansible | PLAY RECAP ***********************************************************************************************************************************
+2023-06-02 16:54:03,208 p=10135 u=ubuntu n=ansible | db01                       : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-06-02 16:54:22,131 p=10187 u=ubuntu n=ansible | PLAY [Install Memcache Start and enable SVC] *************************************************************************************************
+2023-06-02 16:54:22,145 p=10187 u=ubuntu n=ansible | TASK [Install Memcache] **********************************************************************************************************************
+2023-06-02 16:55:26,879 p=10187 u=ubuntu n=ansible | changed: [mc01]
+2023-06-02 16:55:26,884 p=10187 u=ubuntu n=ansible | TASK [Start and Enable Memcache] *************************************************************************************************************
+2023-06-02 16:55:28,373 p=10187 u=ubuntu n=ansible | ok: [mc01]
+2023-06-02 16:55:28,378 p=10187 u=ubuntu n=ansible | TASK [Enable remote login to memcached] ******************************************************************************************************
+2023-06-02 16:55:28,781 p=10187 u=ubuntu n=ansible | changed: [mc01]
+2023-06-02 16:55:28,782 p=10187 u=ubuntu n=ansible | RUNNING HANDLER [Restart memcached] **********************************************************************************************************
+2023-06-02 16:55:29,725 p=10187 u=ubuntu n=ansible | changed: [mc01]
+2023-06-02 16:55:29,729 p=10187 u=ubuntu n=ansible | PLAY RECAP ***********************************************************************************************************************************
+2023-06-02 16:55:29,729 p=10187 u=ubuntu n=ansible | mc01                       : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-06-02 16:55:51,986 p=10245 u=ubuntu n=ansible | PLAY [Install and Setup RabbitMQ with user] **************************************************************************************************
+2023-06-02 16:55:52,000 p=10245 u=ubuntu n=ansible | TASK [Install dependies] *********************************************************************************************************************
+2023-06-02 16:56:09,049 p=10245 u=ubuntu n=ansible | ok: [rmq01] => (item=curl)
+2023-06-02 16:56:10,904 p=10245 u=ubuntu n=ansible | ok: [rmq01] => (item=gnupg)
+2023-06-02 16:56:20,395 p=10245 u=ubuntu n=ansible | changed: [rmq01] => (item=apt-transport-https)
+2023-06-02 16:56:22,191 p=10245 u=ubuntu n=ansible | ok: [rmq01] => (item=ca-certificates)
+2023-06-02 16:56:22,197 p=10245 u=ubuntu n=ansible | TASK [Copy mq.sh to /root of the remote hosts] ***********************************************************************************************
+2023-06-02 16:56:22,946 p=10245 u=ubuntu n=ansible | changed: [rmq01]
+2023-06-02 16:56:22,953 p=10245 u=ubuntu n=ansible | TASK [Execute mq.sh] *************************************************************************************************************************
+2023-06-02 16:56:24,404 p=10245 u=ubuntu n=ansible | changed: [rmq01]
+2023-06-02 16:56:24,409 p=10245 u=ubuntu n=ansible | TASK [Copy rabbitmq.list to /etc/apt/sources.list.d of the rmqsrvgrp hosts] ******************************************************************
+2023-06-02 16:56:24,892 p=10245 u=ubuntu n=ansible | changed: [rmq01]
+2023-06-02 16:56:24,897 p=10245 u=ubuntu n=ansible | TASK [Install erlang] ************************************************************************************************************************
+2023-06-02 16:57:15,709 p=10245 u=ubuntu n=ansible | changed: [rmq01] => (item=erlang-base)
+2023-06-02 16:57:24,636 p=10245 u=ubuntu n=ansible | changed: [rmq01] => (item=erlang-asn1)
+2023-06-02 16:57:25,645 p=10245 u=ubuntu n=ansible | ok: [rmq01] => (item=erlang-crypto)
+2023-06-02 16:57:34,542 p=10245 u=ubuntu n=ansible | changed: [rmq01] => (item=erlang-eldap)
+2023-06-02 16:57:42,878 p=10245 u=ubuntu n=ansible | changed: [rmq01] => (item=erlang-ftp)
+2023-06-02 16:57:51,440 p=10245 u=ubuntu n=ansible | changed: [rmq01] => (item=erlang-inets)
+2023-06-02 16:57:52,480 p=10245 u=ubuntu n=ansible | ok: [rmq01] => (item=erlang-mnesia)
+2023-06-02 16:58:01,481 p=10245 u=ubuntu n=ansible | changed: [rmq01] => (item=erlang-os-mon)
+2023-06-02 16:58:09,939 p=10245 u=ubuntu n=ansible | changed: [rmq01] => (item=erlang-parsetools)
+2023-06-02 16:58:10,972 p=10245 u=ubuntu n=ansible | ok: [rmq01] => (item=erlang-public-key)
+2023-06-02 16:58:12,000 p=10245 u=ubuntu n=ansible | ok: [rmq01] => (item=erlang-runtime-tools)
+2023-06-02 16:58:13,015 p=10245 u=ubuntu n=ansible | ok: [rmq01] => (item=erlang-snmp)
+2023-06-02 16:58:14,040 p=10245 u=ubuntu n=ansible | ok: [rmq01] => (item=erlang-ssl)
+2023-06-02 16:58:15,034 p=10245 u=ubuntu n=ansible | ok: [rmq01] => (item=erlang-syntax-tools)
+2023-06-02 16:58:16,052 p=10245 u=ubuntu n=ansible | ok: [rmq01] => (item=erlang-tftp)
+2023-06-02 16:58:24,489 p=10245 u=ubuntu n=ansible | changed: [rmq01] => (item=erlang-tools)
+2023-06-02 16:58:33,007 p=10245 u=ubuntu n=ansible | changed: [rmq01] => (item=erlang-xmerl)
+2023-06-02 16:58:33,013 p=10245 u=ubuntu n=ansible | TASK [Install Rabbit MQ] *********************************************************************************************************************
+2023-06-02 16:58:35,270 p=10245 u=ubuntu n=ansible | fatal: [rmq01]: FAILED! => {"changed": false, "msg": "Failed to update apt cache: W:Updating from such a repository can't be done securely, and is therefore disabled by default., W:See apt-secure(8) manpage for repository creation and user configuration details., E:The repository 'https://ppa1.novemberain.com/rabbitmq/rabbitmq-erlang/deb/ubuntu focal Release' does not have a Release file., W:Updating from such a repository can't be done securely, and is therefore disabled by default., W:See apt-secure(8) manpage for repository creation and user configuration details., E:The repository 'https://ppa1.novemberain.com/rabbitmq/rabbitmq-server/deb/ubuntu focal Release' does not have a Release file."}
+2023-06-02 16:58:35,273 p=10245 u=ubuntu n=ansible | PLAY RECAP ***********************************************************************************************************************************
+2023-06-02 16:58:35,273 p=10245 u=ubuntu n=ansible | rmq01                      : ok=5    changed=5    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
