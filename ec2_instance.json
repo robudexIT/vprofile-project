@@ -174,3 +174,22 @@ web01.out.instances[0].network_interfaces[0].private_ip_address
         }
     }
 }
+
+
+
+ok: [db01] => (item=admin) => {
+    "admin": "VARIABLE IS NOT DEFINED!",
+    "ansible_loop_var": "item",
+    "item": "admin"
+}
+ok: [db01] => (item=admin123) => {
+    "admin123": "VARIABLE IS NOT DEFINED!",
+    "ansible_loop_var": "item",
+    "item": "admin123"
+}
+ok: [db01] => (item=accounts) => {
+    "accounts": "VARIABLE IS NOT DEFINED!",
+    "ansible_loop_var": "item",
+    "item": "accounts"
+}
+
