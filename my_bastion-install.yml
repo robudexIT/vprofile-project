@@ -23,7 +23,7 @@
       copy:
         content: "{{key_out.key.private_key}}"
         dest: "./bastion-key.pem"
-        mode: 0600
+        mode: 0400
       when: key_out.changed
 
     - name: Create Bastion Host Security Group
@@ -94,7 +94,7 @@
      
     - name: Clone Vprofile lastest repository
       command: 
-        cmd: git clone https://github.com/robudexIT/vprofile-project.git
+        cmd: git clone -b ansible-vporfile-stack https://github.com/robudexIT/vprofile-project.git
       delegate_to: "{{bastHostout.instances[0].public_ip_address}}"
       become: true
       become_user: ubuntu
