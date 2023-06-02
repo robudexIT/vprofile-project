@@ -17,6 +17,10 @@
     #   tags: 
     #     - package 
       
+    - name: Install  ca-certificates
+      apt: 
+       name: ca-certificates 
+       state: present
 
     - name: Install dependies 
       apt: 
